@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"      
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+           
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Consulta</title>
+        <!-- inserir este trecho em todas as paginas -->
+        <LINK rel="stylesheet" type="text/css" href="css/style.css"/> 
+        <div class="cab"><ui:include src="/publico/cab.xhtml"/>
+        <ui:include src="/publico/menu.xhtml"/> </div> 
+    </h:head>
+    <h:body>
+        <fieldset id="consulta" style="width: 350px">
+            <legend>Consulta</legend>
+        <h:dataTable value="#{publicacaoBean.listExemplarConsulta}" var="exemplar" >
+            <h:column>
+                <f:facet name="header"><h:outputText value="ISBN" /></f:facet>
+                <h:outputText value="#{exemplar.publicacao.isbn}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Titulo" /></f:facet>
+                <h:outputText value="#{exemplar.publicacao.titulo}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Editora" /></f:facet>
+                <h:outputText value="#{exemplar.publicacao.editora}" />
+            </h:column>
+            <h:column>
+                <f:facet name="header"><h:outputText value="Autor" /></f:facet>
+                <h:outputText value="#{exemplar.publicacao.autor}" />
+            </h:column>
+
+            <h:column>
+                <f:facet name="header"><h:outputText value="Numero" /></f:facet>
+                <h:outputText value="#{exemplar.numero}" />
+            </h:column>
+           
+            <h:column>
+                <f:facet name="header"><h:outputText value="Preco" /></f:facet>
+                <h:outputText value="#{exemplar.preco}" />
+            </h:column>
+        </h:dataTable>
+ #{exemplarBean.numeroMax(2)}
+            
+        <h:form>
+         <h:panelGrid columns="2">   <h:outputText value="ISBN" />
+            <h:inputText value="#{publicacaoBean.isbn}" />
+            <h:outputText value="Titulo" />
+            <h:inputText value="#{publicacaoBean.titulo}" /></h:panelGrid>
+            <h:commandButton value="Busca" action="#{publicacaoBean.listaConsulta2()}" />
+        </h:form>
+        </fieldset>
+    </h:body>
+    <div class="footer">
+        <ui:include src="/publico/footer.xhtml"/>
+    </div>
+</html>
